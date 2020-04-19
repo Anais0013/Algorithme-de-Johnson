@@ -39,6 +39,7 @@ while list_de_travail != []:
     minimum = min (list_de_travail);
     # garde en memoire les elements traites
     list_memory.append(minimum);
+    print("memoire", list_memory);
     if (minimum in list_machine1):
         print("debug 1");
         print("min");
@@ -46,7 +47,8 @@ while list_de_travail != []:
         index_minimum_list_machine1 = list_machine1.index(minimum);
         print(index_minimum_list_machine1);
         # gere le probleme de doublon
-        if (minimum in list_memory == True):
+        print("verif",minimum in list_memory);
+        if (minimum in list_memory):
             print("ok1");
             # compte occurence
             combien_de_fois_min = list_memory.count(minimum);
@@ -76,7 +78,7 @@ while list_de_travail != []:
         print("index min");
         print(index_minimum_list_machine2);
         # gere le probleme de doublon
-        if (minimum in list_memory == True):
+        if (minimum in list_memory):
             print("ok2");
             # compte occurence
             combien_de_fois_min = list_memory.count(minimum);
