@@ -38,29 +38,25 @@ while list_de_travail != []:
     minimum = min (list_de_travail);
     if (minimum in list_machine1):
         print("debug 1");
-        print("min");
-        print(minimum);
+        print("min", minimum);
         index_minimum_list_machine1 = list_machine1.index(minimum);
-        print(index_minimum_list_machine1);
+        print("index", index_minimum_list_machine1);
         # gere le probleme de doublon
-        print("verif",minimum in list_memory);
-        print(list_memory);
-        print(minimum);
-        if (minimum in list_memory):
+        print("verif",minimum in list_memory1);
+        if (minimum in list_memory1):
             print("ok1");
             # compte occurence dans memoire
-            combien_de_fois_min = list_memory.count(minimum);
+            combien_de_fois_min = list_memory1.count(minimum);
             print(combien_de_fois_min);
             # compte occurence dans list_machine1
             combien_de_fois_min_list_machine1_copy = list_machine1.count(minimum);
             # liste les index du minimum
             list_occurence_du_min = getIndexPositions(list_machine1_copy, minimum);
             print(list_occurence_du_min);
-            # on prend le combien de fois min+1 
+            # on prend le combien de fois on a traiter le min dans liste memoire suivant
             index_courant = list_occurence_du_min[combien_de_fois_min];
-            #
-            c = list_machine1_copy[index_courant];
-            list_debut.append (c);
+            index_courant = list_machine1_copy[index_courant];
+            list_debut.append (index_courant);
             print(list_debut);
             del list_machine2[index_minimum_list_machine1];
             del list_machine1[index_minimum_list_machine1];
@@ -68,17 +64,20 @@ while list_de_travail != []:
             print(list_machine2);
             list_de_travail = list_machine1 + list_machine2;
             print(list_de_travail);
+            list_memory1.append(minimum);
         else :
-            c = list_machine1_copy.index(minimum);
-            print(c);
-            list_debut.append (c+1);
-            print(list_debut);
-            del list_machine2[index_minimum_list_machine1];
+            recup_index_reel = list_machine1_copy.index(minimum);
+            print(index_minimum_list_machine1);
+            # si l'indice minimum est 0 récupère la première valeur
+            list_fin.append (recup_index_reel+1);
+            print(list_fin);
+            # efface les tache traite
             del list_machine1[index_minimum_list_machine1];
-            print(list_machine1);
-            print(list_machine2);
+            del list_machine2[index_minimum_list_machine1];
+            # nouvelle liste de travail
             list_de_travail = list_machine1 + list_machine2;
             print(list_de_travail);
+            list_memory1.append(minimum);
     else:
         print("debug 2");
         print("min");
@@ -87,7 +86,7 @@ while list_de_travail != []:
         print("index min");
         print(index_minimum_list_machine2);
         # gere le probleme de doublon
-        if (minimum in list_memory):
+        if (minimum in list_memory2):
             print("ok2");
             # compte occurence dans memoire
             combien_de_fois_min = list_memory.count(minimum);
@@ -108,6 +107,7 @@ while list_de_travail != []:
             print(list_machine2);
             list_de_travail = list_machine1 + list_machine2;
             print(list_de_travail);
+            list_memory2.append(minimum);
         else :
             recup_index_reel = list_machine2_copy.index(minimum);
             print(index_minimum_list_machine2);
@@ -120,9 +120,8 @@ while list_de_travail != []:
             # nouvelle liste de travail
             list_de_travail = list_machine1 + list_machine2;
             print(list_de_travail);
-    # stock en memoire l'element traite
-    list_memory1.append(minimum);
-    list_memory2.append(minimum);
+            list_memory2.append(minimum);
+    print("debut - fin", list_debut, list_fin);
     
 # inverse la liste debut
 list_fin.reverse();
