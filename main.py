@@ -4,6 +4,8 @@
 #Resume : application de l'algorithme de Johnson
 #Date de creation : le 18/04/20
 #Date de derniere modification : le 19/04/20
+
+#Inspiré de : http://www.unit.eu/cours/EnsROtice/module_avance_thg_voo6/co/johnson.html?fbclid=IwAR1WtxnCjKfx0pvMbqT1PVPlEFpbWpQ_-MHZwBo89Ym9NoNivtP67RzV3TI
 #########################################################
         
 L1 =[];
