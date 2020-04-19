@@ -9,28 +9,21 @@
 L1 =[];
 L2 =[];
 
-list_machine1 =[80, 40, 60, 50, 60, 50, 80];
-list_machine2 = [60, 30, 60, 80, 60, 50, 50];
+W =[[80, 40, 60, 50, 60, 50, 80], [60, 30, 60, 80, 60, 50, 50]];
 
 list_final_tache =[1, 2, 3, 4, 5, 6, 7];
 list_final_ordre =[];
 
-i = 0;
-while i <= len(list_machine1):
-    minimum_machine1 = min(list_machine1);
-    minimum_machine2 = min(list_machine2);
-    if (minimum_machine1 > minimum_machine2):
-        L1.append(list_machine1.index(minimum_machine1)+1);
+while len(W) != 0:
+    minimum = min(W);
+    if (minimum in [80, 40, 60, 50, 60, 50, 80]):
+        L1.append(minimum);
         print(L1);
+        del W[[W.index(minimum)][W.index(minimum)]];
     else:
-        L2.append(list_machine2.index(minimum_machine2)+1);
+        L2.insert(0, W.index(minimum)+1);
         print(L2);
-    del list_machine1[list_machine1.index(minimum_machine1)];
-    del list_machine2[list_machine2.index(minimum_machine2)];
-    i = i+1;
-    
-# inverse la liste debut
-L1.reverse();
+        del W[[W.index(minimum)][W.index(minimum)]];
 
 # concatenation
 list_final_ordre = L1 + L2;
