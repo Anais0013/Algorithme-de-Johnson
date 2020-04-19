@@ -3,7 +3,7 @@
 #Fichier : main.c
 #Resume : application de l'algorithme de Johnson
 #Date de creation : le 18/04/20
-#Date de derniere modification : le 18/04/20
+#Date de derniere modification : le 19/04/20
 #########################################################
 
 list_debut =[];
@@ -22,19 +22,18 @@ list_final_ordre =[];
 list_de_travail = list_machine1 + list_machine2;
 
 print (list_de_travail);
-#print (list_de_travail.index(870));
 
 while list_de_travail != []:
-    print(len(list_machine1));
     a = min (list_de_travail);
     if (a in list_machine1):
         print("debg 1");
         print(a);
         b = list_machine1.index(a);
-        c = list_machine1_copy.index(a);
         print(b);
-        list_fin.append (c+1);
-        print(list_fin);
+        c = list_machine1_copy.index(a);
+        print(c);
+        list_debut.append (c+1);
+        print(list_debut);
         list_de_travail.remove (a);
         del list_machine2[b];
         del list_machine1[b];
@@ -63,6 +62,7 @@ list_fin.reverse();
 
 #concatenation
 print(list_debut);
+print("ok");
 print(list_fin);
 list_final_ordre = list_debut + list_fin;
 print ("tâche : ",list_final_tache);
