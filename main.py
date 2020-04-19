@@ -27,7 +27,7 @@ list_memory2 = [];
 
 list_de_travail =[];
 
-list_final_tache =[1,2,3];
+list_final_tache =[1, 2, 3, 4, 5, 6, 7];
 list_final_ordre =[];
 
 list_de_travail = list_machine1 + list_machine2;
@@ -56,7 +56,7 @@ while list_de_travail != []:
             # on prend le combien de fois on a traiter le min dans liste memoire suivant
             index_courant = list_occurence_du_min[combien_de_fois_min];
             index_courant = list_machine1_copy[index_courant];
-            list_debut.append (index_courant);
+            list_debut.append (list_machine1_copy.index(index_courant));
             print(list_debut);
             del list_machine2[index_minimum_list_machine1];
             del list_machine1[index_minimum_list_machine1];
