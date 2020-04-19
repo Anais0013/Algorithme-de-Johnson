@@ -5,129 +5,35 @@
 #Date de creation : le 18/04/20
 #Date de derniere modification : le 19/04/20
 #########################################################
-
-def getIndexPositions(listOfElements, element):
-    ''' Returns the indexes of all occurrences of give element in
-    the list- listOfElements '''
-    indexPosList = []
-    for i in range(len(listOfElements)): 
-        if listOfElements[i] == element:
-            indexPosList.append(i)
-    return indexPosList
         
-list_debut =[];
-list_fin =[];
+L1 =[];
+L2 =[];
 
 list_machine1 =[80, 40, 60, 50, 60, 50, 80];
 list_machine2 = [60, 30, 60, 80, 60, 50, 50];
-list_machine1_copy =list(list_machine1);
-list_machine2_copy =list(list_machine2);
-list_memory1 = [];
-list_memory2 = [];
-
-list_de_travail =[];
 
 list_final_tache =[1, 2, 3, 4, 5, 6, 7];
 list_final_ordre =[];
 
-list_de_travail = list_machine1 + list_machine2;
-
-print (list_de_travail);
-
-while list_de_travail != []:
-    minimum = min (list_de_travail);
-    if (minimum in list_machine1):
-        print("debug 1");
-        print("min", minimum);
-        index_minimum_list_machine1 = list_machine1.index(minimum);
-        print("index", index_minimum_list_machine1);
-        # gere le probleme de doublon
-        print("verif",minimum in list_memory1);
-        if (minimum in list_memory1):
-            print("ok1");
-            # compte occurence dans memoire
-            combien_de_fois_min = list_memory1.count(minimum);
-            print(combien_de_fois_min);
-            # compte occurence dans list_machine1
-            combien_de_fois_min_list_machine1_copy = list_machine1.count(minimum);
-            # liste les index du minimum
-            list_occurence_du_min = getIndexPositions(list_machine1_copy, minimum);
-            print(list_occurence_du_min);
-            # on prend le combien de fois on a traiter le min dans liste memoire suivant
-            index_courant = list_occurence_du_min[combien_de_fois_min];
-            index_courant = list_machine1_copy[index_courant];
-            list_debut.append (list_machine1_copy.index(index_courant));
-            print(list_debut);
-            del list_machine2[index_minimum_list_machine1];
-            del list_machine1[index_minimum_list_machine1];
-            print(list_machine1);
-            print(list_machine2);
-            list_de_travail = list_machine1 + list_machine2;
-            print(list_de_travail);
-            list_memory1.append(minimum);
-        else :
-            recup_index_reel = list_machine1_copy.index(minimum);
-            print(index_minimum_list_machine1);
-            # si l'indice minimum est 0 récupère la première valeur
-            list_fin.append (recup_index_reel+1);
-            print(list_fin);
-            # efface les tache traite
-            del list_machine1[index_minimum_list_machine1];
-            del list_machine2[index_minimum_list_machine1];
-            # nouvelle liste de travail
-            list_de_travail = list_machine1 + list_machine2;
-            print(list_de_travail);
-            list_memory1.append(minimum);
+i = 0;
+while i <= len(list_machine1):
+    minimum_machine1 = min(list_machine1);
+    minimum_machine2 = min(list_machine2);
+    if (minimum_machine1 > minimum_machine2):
+        L1.append(list_machine1.index(minimum_machine1)+1);
+        print(L1);
     else:
-        print("debug 2");
-        print("min");
-        print(minimum);
-        index_minimum_list_machine2 = list_machine2.index(minimum);
-        print("index min");
-        print(index_minimum_list_machine2);
-        # gere le probleme de doublon
-        if (minimum in list_memory2):
-            print("ok2");
-            # compte occurence dans memoire
-            combien_de_fois_min = list_memory.count(minimum);
-            print(combien_de_fois_min);
-            # compte occurence dans list_machine1
-            combien_de_fois_min_list_machine2_copy = list_machine2.count(minimum);
-            # liste les index du minimum
-            list_occurence_du_min = getIndexPositions(list_machine2_copy, minimum);
-            print(list_occurence_du_min);
-            # on prend le combien de fois min+1 
-            index_courant = list_occurence_du_min[combien_de_fois_min];
-            c = list_machine2_copy[index_courant];
-            list_fin.append (c);
-            print(list_fin);
-            del list_machine1[index_minimum_list_machine1];
-            del list_machine2[index_minimum_list_machine1];
-            print(list_machine1);
-            print(list_machine2);
-            list_de_travail = list_machine1 + list_machine2;
-            print(list_de_travail);
-            list_memory2.append(minimum);
-        else :
-            recup_index_reel = list_machine2_copy.index(minimum);
-            print(index_minimum_list_machine2);
-            # si l'indice minimum est 0 récupère la première valeur
-            list_fin.append (recup_index_reel+1);
-            print(list_fin);
-            # efface les tache traite
-            del list_machine1[index_minimum_list_machine2];
-            del list_machine2[index_minimum_list_machine2];
-            # nouvelle liste de travail
-            list_de_travail = list_machine1 + list_machine2;
-            print(list_de_travail);
-            list_memory2.append(minimum);
-    print("debut - fin", list_debut, list_fin);
+        L2.append(list_machine2.index(minimum_machine2)+1);
+        print(L2);
+    del list_machine1[list_machine1.index(minimum_machine1)];
+    del list_machine2[list_machine2.index(minimum_machine2)];
+    i = i+1;
     
 # inverse la liste debut
-list_fin.reverse();
+L1.reverse();
 
 # concatenation
-list_final_ordre = list_debut + list_fin;
+list_final_ordre = L1 + L2;
 
 # affichage
 print ("tâche : ",list_final_tache);
